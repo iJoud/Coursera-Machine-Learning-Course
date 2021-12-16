@@ -20,7 +20,8 @@ grad = zeros(size(theta));
 thetaNew = theta;
 thetaNew(1) = 0;
 J = (1 / m) *  (-y' *log( sigmoid(X*theta) ) - ( 1 - y') * log ( 1 - sigmoid(X*theta) )) + ( lambda / (2 * m) * sum( thetaNew .^ 2 ) );
-grad = ( ( 1 / m ) * ( X' * ( sigmoid(X*theta) -  y )  ) ) +  ( lambda / m *  thetaNew ) ; 
+RegGradientPart = ( lambda / m *  thetaNew ) ;
+grad = ( ( 1 / m ) * ( X' * ( sigmoid(X*theta) -  y )  ) ) +  RegGradientPart ; 
 
 
 % =============================================================
