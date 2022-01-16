@@ -29,12 +29,23 @@ p = zeros(size(X, 1), 1);
 % 
 
 l1 = [ones(m, 1) X];
+a2 = sigmoid(l1 * Theta1');
+a2 = [ones(m, 1) a2];
+z3 = a2 * Theta2';
+hypo = sigmoid(z3);
+[probability indices] = max(hypo');
+p = indices';
+
+
+
+
+
+l1 = [ones(m, 1) X];
 layer1 = sigmoid(l1 * Theta1');
-layer1 = [ones(m, 1) layer1];
-layer2 = sigmoid(layer1 * Theta2');
+l1 = [ones(m, 1) l1];
+layer2 = sigmoid(l2 * Theta2');
+
 [q, p]=max(layer2,[],2);  
-
-
 
 
 
