@@ -64,9 +64,9 @@ Theta2_grad = zeros(size(Theta2));
 
 %-------------------- Part1
 a1 = [ones(m, 1) X]; % add bias node 
-a2 = sigmoid(a1 * Theta1'); % < z2 = a1 * Theta1';
+a2 = sigmoid(a1 * Theta1'); % < z for a2 = a1 * Theta1';
 a2 = [ones(size(a2,1), 1) a2]; % add bias node 
-a3 = sigmoid(a2 * Theta2'); % < z3 = a2 * Theta2'; <<< h Theta (X) ;
+a3 = sigmoid(a2 * Theta2'); % < h Theta (X) ;
 % modify y vector
 y_vector = zeros(m, num_labels); % y_modified
 for i = 1:m
@@ -80,7 +80,7 @@ Reg_JPart = ( sum( sum( t1 .^ 2)) + sum( sum( t2 .^ 2)) ) * ( lambda / (2*m) );
 J = - ( 1/m ) *  ( sum( sum( y_vector .* log(a3) + ( 1 - y_vector ) .* log( 1 - a3 ))) );
 J = J + Reg_JPart ;
 
-%-------------------- Part2
+%-------------------- Part2 + 3
 D1 = zeros(size(Theta1));
 D2 = zeros(size(Theta2));
 for i = 1:m
